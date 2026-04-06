@@ -1,13 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import logo from '../assets/sweet-string.png';
+import Carousel from '../components/Carousel.astro';
 ---
 
 <Layout>
 	<main class="page-shell">
 		<section class="hero">
 			<div class="hero-copy">
-				<img src={logo.src} alt="Sweet String logo" class="logo" />
+				<Image src={logo} alt="Sweet String logo" class="logo" />
 				<p class="eyebrow">Sweet String</p>
 				<h1>Acoustic pop &amp; OPM from the Philippines</h1>
 				<p class="copy">
@@ -20,11 +22,7 @@ import logo from '../assets/sweet-string.png';
 				</div>
 			</div>
 			<div class="hero-media">
-				<img
-					src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80"
-					alt="Sweet String acoustic band performing live"
-					loading="eager"
-				/>
+				<Carousel />
 			</div>
 		</section>
 
@@ -182,12 +180,8 @@ import logo from '../assets/sweet-string.png';
 		color: #4338ca;
 	}
 
-	.hero-media img {
+	.hero-media {
 		width: 100%;
-		height: auto;
-		border-radius: 32px;
-		box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
-		object-fit: cover;
 	}
 
 	.section {

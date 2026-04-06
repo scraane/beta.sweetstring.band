@@ -1,9 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import logo from '../assets/sweet-string.png';
 ---
 
-<div id="carousel-container">
-	<div class="carousel-wrapper">
+<div class="carousel-wrapper">
 		<div class="carousel-images">
 			<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop" alt="Music" class="carousel-image active" />
 			<img src="https://images.unsplash.com/photo-1516280318271-a27f1dd64314?w=600&h=400&fit=crop" alt="Live Performance" class="carousel-image" />
@@ -12,7 +12,7 @@ import logo from '../assets/sweet-string.png';
 			<img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=400&fit=crop" alt="Music Studio" class="carousel-image" />
 		</div>
 		
-		<img src={logo.src} alt="Sweet String Logo" class="carousel-logo" />
+		<Image src={logo} alt="Sweet String Logo" class="carousel-logo" />
 		
 		<div class="carousel-bubbles">
 			<button class="bubble active" data-index="0"></button>
@@ -22,17 +22,8 @@ import logo from '../assets/sweet-string.png';
 			<button class="bubble" data-index="4"></button>
 		</div>
 	</div>
-</div>
 
 <style>
-	#carousel-container {
-		width: 100%;
-		display: flex;
-		justify-content: flex-end;
-		padding-right: 16px;
-		padding-top: 16px;
-	}
-
 	.carousel-wrapper {
 		position: relative;
 		width: 400px;
@@ -105,10 +96,6 @@ import logo from '../assets/sweet-string.png';
 	}
 
 	@media screen and (max-width: 768px) {
-		#carousel-container {
-			justify-content: center;
-		}
-
 		.carousel-wrapper {
 			width: 100%;
 			max-width: 500px;
