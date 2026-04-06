@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "beta-sweetstring-band",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -9,9 +9,18 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "astro": "^6.1.3"
   }
 }
+
+"scripts": {
+  "dev": "astro dev",
+  "build": "astro build",
+  "preview": "astro preview",
+  "deploy": "npm run build && wrangler deploy"
+}
+
+
