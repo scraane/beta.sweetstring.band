@@ -62,27 +62,34 @@ import Carousel from '../components/Carousel.astro';
 			<div class="video-grid">
 				<div class="video-card">
 					<iframe
+						id="yt-embed"
 						width="560"
 						height="315"
-						src="https://www.youtube.com/embed/mWhjb60MT2Q"
-						title="Sweet String featured performance"
+						src="https://www.youtube.com/embed/videoseries?list=PLQeBXMNixja0obCxziLWrjzjHxaL91bir"
+						title="Sweet String performance"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen
 					></iframe>
 					<h3>Featured music video</h3>
-					<p>Acoustic pop performance from our latest playlist. Replace with your band's videos when ready.</p>
+					<p>A random pick from the Sweet String playlist, refreshed on every visit.</p>
 				</div>
 
 				<div class="video-card video-card-secondary">
-					<a href="https://www.youtube.com/watch?v=mWhjb60MT2Q" target="_blank" rel="noreferrer">
+					<a href="https://www.youtube.com/playlist?list=PLQeBXMNixja0obCxziLWrjzjHxaL91bir" target="_blank" rel="noreferrer">
 						<div class="video-thumb"></div>
 						<div>
-							<h3>Watch the full set</h3>
-							<p>YouTube preview of the band's signature acoustic sound.</p>
+							<h3>Full playlist</h3>
+							<p>Watch all Sweet String videos on YouTube.</p>
 						</div>
 					</a>
 				</div>
 			</div>
+
+			<script>
+				const iframe = document.getElementById('yt-embed') as HTMLIFrameElement;
+				const index = Math.floor(Math.random() * 20);
+				iframe.src = `https://www.youtube.com/embed/videoseries?list=PLQeBXMNixja0obCxziLWrjzjHxaL91bir&index=${index}`;
+			</script>
 		</section>
 
 		<section class="section contact-section">
