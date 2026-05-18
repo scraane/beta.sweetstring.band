@@ -92,6 +92,25 @@ import Carousel from '../components/Carousel.astro';
 			</script>
 		</section>
 
+		<section id="facebook" class="section facebook-section">
+			<h2>Follow us on Facebook</h2>
+			<p class="section-copy">Stay updated with our latest gigs, announcements, and behind-the-scenes moments.</p>
+			<div class="fb-page-wrapper">
+				<div id="fb-root"></div>
+				<div
+					class="fb-page"
+					data-href="https://www.facebook.com/sweetstringbandph"
+					data-tabs="timeline"
+					data-width=""
+					data-height="500"
+					data-small-header="false"
+					data-adapt-container-width="true"
+					data-hide-cover="false"
+					data-show-facepile="true"
+				></div>
+			</div>
+		</section>
+
 		<section class="section contact-section">
 			<div>
 				<h2>Book Sweet String</h2>
@@ -100,12 +119,27 @@ import Carousel from '../components/Carousel.astro';
 				</p>
 				<p class="contact-info">
 					Email: <a href="mailto:hello@sweetstring.band">hello@sweetstring.band</a><br />
-					IG: <a href="https://www.instagram.com/sweetstringband/" target="_blank" rel="noreferrer">@sweetstringband</a>
+					IG: <a href="https://www.instagram.com/sweetstringband/" target="_blank" rel="noreferrer">@sweetstringband</a><br />
+					FB: <a href="https://www.facebook.com/sweetstringbandph" target="_blank" rel="noreferrer">Sweet String Band PH</a>
 				</p>
 			</div>
 		</section>
 	</main>
 </Layout>
+
+<script is:inline>
+	window.fbAsyncInit = function () {
+		FB.init({ xfbml: true, version: 'v19.0' });
+	};
+	(function (d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = 'https://connect.facebook.net/en_PH/sdk.js';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
 
 <style>
 	.page-shell {
@@ -309,6 +343,17 @@ import Carousel from '../components/Carousel.astro';
 	.contact-info a {
 		color: #4338ca;
 		font-weight: 700;
+	}
+
+	.facebook-section h2 {
+		font-size: clamp(2rem, 2.5vw, 3rem);
+		margin-bottom: 12px;
+	}
+
+	.fb-page-wrapper {
+		margin-top: 28px;
+		display: flex;
+		justify-content: center;
 	}
 
 	@media (max-width: 960px) {
