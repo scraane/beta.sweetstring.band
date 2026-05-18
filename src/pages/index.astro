@@ -1,13 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 import logo from '../assets/sweet-string.png';
+import Carousel from '../components/Carousel.astro';
 ---
 
 <Layout>
 	<main class="page-shell">
 		<section class="hero">
 			<div class="hero-copy">
-				<img src={logo.src} alt="Sweet String logo" class="logo" />
+				<Image src={logo} alt="Sweet String logo" class="logo" />
 				<p class="eyebrow">Sweet String</p>
 				<h1>Acoustic pop &amp; OPM from the Philippines</h1>
 				<p class="copy">
@@ -20,11 +22,7 @@ import logo from '../assets/sweet-string.png';
 				</div>
 			</div>
 			<div class="hero-media">
-				<img
-					src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1200&q=80"
-					alt="Sweet String acoustic band performing live"
-					loading="eager"
-				/>
+				<Carousel />
 			</div>
 		</section>
 
@@ -64,26 +62,52 @@ import logo from '../assets/sweet-string.png';
 			<div class="video-grid">
 				<div class="video-card">
 					<iframe
+						id="yt-embed"
 						width="560"
 						height="315"
-						src="https://www.youtube.com/embed/mWhjb60MT2Q"
-						title="Sweet String featured performance"
+						src="https://www.youtube.com/embed/videoseries?list=PLQeBXMNixja0obCxziLWrjzjHxaL91bir"
+						title="Sweet String performance"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen
 					></iframe>
 					<h3>Featured music video</h3>
-					<p>Acoustic pop performance from our latest playlist. Replace with your band's videos when ready.</p>
+					<p>A random pick from the Sweet String playlist, refreshed on every visit.</p>
 				</div>
 
 				<div class="video-card video-card-secondary">
-					<a href="https://www.youtube.com/watch?v=mWhjb60MT2Q" target="_blank" rel="noreferrer">
+					<a href="https://www.youtube.com/playlist?list=PLQeBXMNixja0obCxziLWrjzjHxaL91bir" target="_blank" rel="noreferrer">
 						<div class="video-thumb"></div>
 						<div>
-							<h3>Watch the full set</h3>
-							<p>YouTube preview of the band's signature acoustic sound.</p>
+							<h3>Full playlist</h3>
+							<p>Watch all Sweet String videos on YouTube.</p>
 						</div>
 					</a>
 				</div>
+			</div>
+
+			<script>
+				const iframe = document.getElementById('yt-embed') as HTMLIFrameElement;
+				const index = Math.floor(Math.random() * 20);
+				iframe.src = `https://www.youtube.com/embed/videoseries?list=PLQeBXMNixja0obCxziLWrjzjHxaL91bir&index=${index}`;
+			</script>
+		</section>
+
+		<section id="facebook" class="section facebook-section">
+			<h2>Follow us on Facebook</h2>
+			<p class="section-copy">Stay updated with our latest gigs, announcements, and behind-the-scenes moments.</p>
+			<div class="fb-page-wrapper">
+				<div id="fb-root"></div>
+				<div
+					class="fb-page"
+					data-href="https://www.facebook.com/sweetstringbandph"
+					data-tabs="timeline"
+					data-width=""
+					data-height="500"
+					data-small-header="false"
+					data-adapt-container-width="true"
+					data-hide-cover="false"
+					data-show-facepile="true"
+				></div>
 			</div>
 		</section>
 
@@ -95,12 +119,27 @@ import logo from '../assets/sweet-string.png';
 				</p>
 				<p class="contact-info">
 					Email: <a href="mailto:hello@sweetstring.band">hello@sweetstring.band</a><br />
-					IG: <a href="https://instagram.com" target="_blank" rel="noreferrer">@sweetstringband</a>
+					IG: <a href="https://www.instagram.com/sweetstringband/" target="_blank" rel="noreferrer">@sweetstringband</a><br />
+					FB: <a href="https://www.facebook.com/sweetstringbandph" target="_blank" rel="noreferrer">Sweet String Band PH</a>
 				</p>
 			</div>
 		</section>
 	</main>
 </Layout>
+
+<script is:inline>
+	window.fbAsyncInit = function () {
+		FB.init({ xfbml: true, version: 'v19.0' });
+	};
+	(function (d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s);
+		js.id = id;
+		js.src = 'https://connect.facebook.net/en_PH/sdk.js';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
 
 <style>
 	.page-shell {
@@ -182,12 +221,8 @@ import logo from '../assets/sweet-string.png';
 		color: #4338ca;
 	}
 
-	.hero-media img {
+	.hero-media {
 		width: 100%;
-		height: auto;
-		border-radius: 32px;
-		box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
-		object-fit: cover;
 	}
 
 	.section {
@@ -308,6 +343,17 @@ import logo from '../assets/sweet-string.png';
 	.contact-info a {
 		color: #4338ca;
 		font-weight: 700;
+	}
+
+	.facebook-section h2 {
+		font-size: clamp(2rem, 2.5vw, 3rem);
+		margin-bottom: 12px;
+	}
+
+	.fb-page-wrapper {
+		margin-top: 28px;
+		display: flex;
+		justify-content: center;
 	}
 
 	@media (max-width: 960px) {
